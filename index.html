@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10100f">
+  <title>Study Ledger — Daily Pages</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Study Ledger home">
+      <span class="brand-mark">✳</span><span>STUDY<span class="brand-light"> LEDGER</span></span>
+    </a>
+    <div class="top-date"><span class="live-dot"></span><span id="headerDate">YOUR DAILY RECORD</span></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">A PERSONAL RECORD OF PROGRESS</p>
+        <h1>Make today<br><em>count.</em></h1>
+        <p class="hero-copy">Write each day into your own little history.</p>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>YOUR</span><strong>DAY</strong><span>YOUR STORY</span><i>✳</i></div>
+    </section>
+
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-view="entry"><span>01</span> Daily page</button>
+      <button class="tab" data-view="dashboard"><span>02</span> Dashboard</button>
+      <button class="tab" data-view="history"><span>03</span> History book</button>
+    </nav>
+
+    <section id="entryView" class="view active">
+      <div class="page-heading">
+        <div><p class="eyebrow">THE OPEN PAGE</p><h2>Today's record</h2></div>
+        <label class="date-control">DATE <input id="entryDate" type="date"></label>
+      </div>
+      <div class="paper-wrap">
+        <div class="paper">
+          <div class="paper-topline"><span>FIELD NOTES / STUDY LOG</span><span id="pageNumber">PAGE 001</span></div>
+          <div class="paper-title-row"><h3 id="paperDateTitle">Today's notes</h3><span class="paper-seal">✳</span></div>
+          <p class="paper-intro">Write in your own words. Blank lines are simply left unwritten.</p>
+          <div id="subjectRows" class="entry-list"></div>
+          <div class="paper-divider"><span>BEYOND THE SYLLABUS</span><span>✦</span></div>
+          <div id="extraRows" class="entry-list extra-list"></div>
+          <button id="addExtraBtn" class="add-row"><span>＋</span> Add another activity</button>
+          <div class="paper-footer">
+            <div><span class="footer-label">TOTAL TIME RECORDED</span><strong id="entryTotal">0 <small>min</small></strong></div>
+            <div class="footer-note"><span class="tiny-star">✳</span><span>Saved automatically<br><small>Only your entries. No assumptions.</small></span></div>
+          </div>
+        </div>
+        <div class="paper-shadow"></div>
+      </div>
+      <div class="bottom-hint"><span class="hint-icon">↳</span> Your entries are saved on this device as you type.</div>
+    </section>
+
+    <section id="dashboardView" class="view">
+      <div class="page-heading">
+        <div><p class="eyebrow">THE BIG PICTURE</p><h2>Your time, in focus.</h2></div>
+        <label class="date-control">TURN THE PAGE <input id="dashboardDate" type="date"></label>
+      </div>
+      <div class="stats-grid simple-stats">
+        <article class="stat-card stat-feature"><span class="stat-label">TOTAL TIME RECORDED</span><strong id="dashTotal">0<span> min</span></strong><p id="dashHours">That's 0 hours of focused effort.</p><div class="stat-spark">✳</div></article>
+        <article class="stat-card"><span class="stat-label">SUBJECTS STUDIED</span><strong id="dashSubjects">0</strong><p>Subjects with time recorded on this date</p></article>
+      </div>
+      <div class="panel week-panel only-chart">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR RECENT RHYTHM</p><h3>Seven days, one story.</h3></div><span class="panel-icon">✳</span></div>
+        <div id="weekChart" class="week-chart"></div>
+        <div class="week-legend"><span><i></i> Minutes recorded</span><span id="weekTotal">0 min total</span></div>
+      </div>
+      <div class="dashboard-note"><span>✳</span><p><strong>Midnight ritual.</strong> The total is recalculated whenever you edit a page and is kept with that date. At 11:59 PM, the day's saved entries form your final total; if the page is closed, your saved entries are still there when you return.</p></div>
+    </section>
+
+    <section id="historyView" class="view">
+      <div class="page-heading">
+        <div><p class="eyebrow">A SHELF OF SMALL WINS</p><h2>Your history book.</h2></div>
+        <div class="history-count"><strong id="historyCount">0</strong><span>saved days</span></div>
+      </div>
+      <p class="history-intro">Each dated page is a snapshot of what you recorded. Open one to revisit it.</p>
+      <div id="historyBook" class="history-book"></div>
+      <div id="emptyHistory" class="empty-history"><span>✧</span><h3>Your story starts here.</h3><p>Save a topic and its time on the Daily page. It will appear here as a page in your book.</p><button class="primary-btn" data-go="entry">Write today's page ↗</button></div>
+    </section>
+
+    <footer class="site-footer"><span>STUDY LEDGER © <span id="year"></span></span><span>MADE OF MINUTES & MOMENTUM <b>✳</b></span><button id="exportBtn" class="text-button">Export backup ↗</button></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+  <script src="app.js"></script>
+</body>
+</html>
